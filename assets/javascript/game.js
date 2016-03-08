@@ -1,4 +1,7 @@
 var randomNum;   //random num
+var ourScore = 0;
+var wins = 0;
+var losses = 0;
 
 //random number generator
 function numGenerator(n) {
@@ -26,7 +29,15 @@ addNumToCrystal("#crystalFour");
 
 //when an image is clicked, it alerts the number that has been passed to that image
 $("#crystalOne, #crystalTwo, #crystalThree, #crystalFour").on("click", function() {
-	alert($(this).attr("data-num"));
+	ourScore+=parseInt($(this).attr("data-num"));
+	$('#currentTotal').text(ourScore);
+		if (ourScore == randomNum) {
+			wins++;
+			$('.wins').text("Wins " + wins);
+		}else if(ourScore>randomNum) {
+			losses++;
+			$('.losses').text(losses);
+		}
 });
 
 
