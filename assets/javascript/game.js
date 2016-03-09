@@ -2,6 +2,8 @@ var randomNum;   //random num
 var ourScore = 0;
 var wins = 0;
 var losses = 0;
+var restartGame;
+
 
 //random number generator
 function numGenerator(n) {
@@ -10,7 +12,7 @@ function numGenerator(n) {
  };  	
 //event where a random number gets passed into the div with the id='randomNum'
 function replaceNum() {
-	randomNum = numGenerator(101);
+	randomNum = numGenerator(121);
 		$("#randomNum").text(randomNum);
 }
 //this function attaches a random number to each image.
@@ -34,12 +36,53 @@ $("#crystalOne, #crystalTwo, #crystalThree, #crystalFour").on("click", function(
 		if (ourScore == randomNum) {
 			wins++;
 			$('.wins').text("Wins " + wins);
+			restartGame();
 		}else if(ourScore>randomNum) {
 			losses++;
-			$('.losses').text(losses);
+			$('.losses').text("Losses " + losses);
+			restartGame();
 		}
+
 });
 
+
+
+//restart
+
+function restartGame() {
+	
+	ourScore = 0;
+ 		$('#currentTotal').text(ourScore);
+	replaceNum();
+	addNumToCrystal("#crystalOne");
+	addNumToCrystal("#crystalTwo");
+	addNumToCrystal("#crystalThree");
+	addNumToCrystal("#crystalFour");
+};
+// function restart() {
+
+
+
+
+
+
+
+
+
+// $("#crystalOne, #crystalTwo, #crystalThree, #crystalFour").on("click", function() {
+// 	ourScore+=parseInt($(this).attr("data-num"));
+// 	$('#currentTotal').text(ourScore);
+// 		if (ourScore == randomNum) {
+// 			wins++;
+// 			$('.wins').text("Wins " + wins);
+// 			restart();
+// 		}else if(ourScore>randomNum) {
+// 			losses++;
+// 			$('.losses').text("Losses " + losses);
+// 			restart();		
+// 		}
+// 	})
+// };
 
 
 //want
