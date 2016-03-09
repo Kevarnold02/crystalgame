@@ -4,7 +4,7 @@ var wins = 0;
 var losses = 0;
 var restartGame;
 
-
+$( document ).ready(function() {
 //random number generator
 function numGenerator(n) {
     
@@ -58,7 +58,8 @@ function restartGame() {
 	addNumToCrystal("#crystalTwo");
 	addNumToCrystal("#crystalThree");
 	addNumToCrystal("#crystalFour");
-};
+}
+});
 // function restart() {
 
 
